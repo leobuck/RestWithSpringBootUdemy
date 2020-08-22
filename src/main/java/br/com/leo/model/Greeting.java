@@ -1,4 +1,4 @@
-package br.com.leo;
+package br.com.leo.model;
 
 public class Greeting {
 
