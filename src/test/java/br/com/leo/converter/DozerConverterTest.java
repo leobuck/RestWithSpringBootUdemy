@@ -8,7 +8,7 @@ import org.junit.Test;
 
 import br.com.leo.converter.mocks.MockPerson;
 import br.com.leo.data.model.Person;
-import br.com.leo.data.vo.PersonVO;
+import br.com.leo.data.vo.v1.PersonVO;
 
 public class DozerConverterTest {
 

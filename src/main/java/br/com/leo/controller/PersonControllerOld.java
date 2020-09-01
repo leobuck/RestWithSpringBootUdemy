@@ -13,12 +13,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.leo.data.vo.PersonVOV2;
 import br.com.leo.data.vo.v1.PersonVO;
 import br.com.leo.services.PersonServices;
 
 @RestController
-@RequestMapping("/api/person/v1")
-public class PersonController {
+@RequestMapping("/person")
+public class PersonControllerOld {
 	
 	@Autowired
 	private PersonServices services;
@@ -37,6 +38,12 @@ public class PersonController {
 	public PersonVO create(@RequestBody PersonVO person) {
 		return services.create(person);
 	}
+	
+	@PostMapping("/v2")
+	public PersonVOV2 createV2(@RequestBody PersonVOV2 person) {
+		return services.createV2(person);
+	}
+	
 	
 	@PutMapping
 	public PersonVO update(@RequestBody PersonVO person) {
