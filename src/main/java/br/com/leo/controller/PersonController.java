@@ -21,6 +21,7 @@ import br.com.leo.services.PersonServices;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
+//@CrossOrigin(origins = {"http://localhost:8080"})
 @Api(value = "Person Endpoint", description = "Description for Person", tags = {"PersonEndpoint"})
 @RestController
 @RequestMapping("/api/person/v1")
