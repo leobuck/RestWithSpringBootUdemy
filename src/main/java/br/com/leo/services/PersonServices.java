@@ -3,6 +3,8 @@ package br.com.leo.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -29,10 +31,20 @@ public class PersonServices {
 		return DozerConverter.parseObject(entity, PersonVO.class);
 	}
 	
-	public List<PersonVO> findAll() {
-		return DozerConverter.parseListObjects(repository.findAll(), PersonVO.class);
+	public Page<PersonVO> findAll(Pageable pageable) {
+		Page<Person> page = repository.findAll(pageable); 
+		return page.map(this::convertToPersonVO);
 	}
 
+	public Page<PersonVO> findPersonByName(String firstName, Pageable pageable) {
+		Page<Person> page = repository.findPersonByName(firstName, pageable); 
+		return page.map(this::convertToPersonVO);
+	}
+	
+	private PersonVO convertToPersonVO(Person entity) {
+		return DozerConverter.parseObject(entity, PersonVO.class);
+	}
+	
 	public PersonVO create(PersonVO person) {
 		Person entity = DozerConverter.parseObject(person, Person.class);
 		PersonVO vo = DozerConverter.parseObject(repository.save(entity), PersonVO.class);

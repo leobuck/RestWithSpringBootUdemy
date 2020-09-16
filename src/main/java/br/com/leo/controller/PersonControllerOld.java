@@ -29,10 +29,10 @@ public class PersonControllerOld {
 		return services.findById(id);
 	}
 	
-	@GetMapping
-	public List<PersonVO> findAll() {
-		return services.findAll();
-	}
+//	@GetMapping
+//	public List<PersonVO> findAll() {
+//		return services.findAll();
+//	}
 	
 	@PostMapping
 	public PersonVO create(@RequestBody PersonVO person) {
